@@ -17,7 +17,8 @@ class Task extends ActiveRecord {
             [['date', 'text'], 'required', 'message' => 'Поле обязательно для заполнения'],
             [['date'], 'default', 'value' => null],
             [['date'], 'date', 'format' => 'yyyy-MM-dd', 'message' => 'Введена некорректная дата'],
-            [['text'], 'string', 'max' => 255, 'message' => 'Превышено максимально допустимое количество символов'],
+            [['text'], 'string', 'max' => 50, 'message' => 'Превышено максимально допустимое количество символов'],
+            [['comment'], 'string', 'max' => 255, 'message' => 'Превышено максимально допустимое количество символов'],
         ];
     }
 
@@ -25,8 +26,9 @@ class Task extends ActiveRecord {
     public function attributeLabels() {
         return [
             'id' => 'ID',
-            'date' => 'Date',
-            'text' => 'Text',
+            'date' => 'Дата',
+            'text' => 'Заголовок',
+            'comment' => 'Комментарий',
         ];
     }
 }

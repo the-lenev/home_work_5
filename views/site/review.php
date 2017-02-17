@@ -12,12 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
     <!-- Отображыем title -->
     <h1><?= Html::encode($this->title) ?></h1>
-    <div class="list-group">
     <?php
     // Для указнной записи выводим значения полей, в соответствующие места в разметке
     // Ссылки указывают на действия контроллера, которые нужно выполнить, и ключи записей, к которым их нужно применить
     ?>
-        <div class='list-group-item'>
+        <div class='list-group-item clearfix'>
             <div class="col-sm-2">
                 <?= $model['date']?>
             </div>
@@ -34,8 +33,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     <span class="glyphicon glyphicon-trash">
                 </a>
             </div>
-            <div style="clear:both"></div>
         </div>
-    </div>
+        <?php
+        // Если поле Комментарий заполнено, то выводим его
+        if ($model['comment']) {?>
+            <h3><?= $model->getAttributeLabel('comment')?></h3>
+            <p><?= $model['comment']?></p>
+        <?php }?>
     <a class="btn btn-success" href="<?= Url::to(['site/'])?>">Вернуться к списку</a>
 </div>

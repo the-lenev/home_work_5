@@ -23,13 +23,19 @@ use yii\jui\DatePicker;
         ?>
         <?=
         // Добавляем поле, соответствующее полю 'text' в таблице и устанавливаем его описание (метку)
-        $form->field($model, 'text')->label('Задача'); ?>
+        $form->field($model, 'text')->label('Задача');
+        ?>
+        <?=
+        // Добавляем поле для комментария
+        $form->field($model, 'comment')->textArea(['rows' => 3, 'cols' => 5])->label('Комментарий');
+        ?>
 
         <div class="form-group">
             <?=
             // Добавляем кнопку отправки формы
             // В зависимости от типа записи (новая/редактирование) меняем её описание и цвет
-            Html::submitButton($model->isNewRecord ? 'Добавить' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+            Html::submitButton($model->isNewRecord ? 'Добавить' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'])
+            ?>
         </div>
 
     <?php
