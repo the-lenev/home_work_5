@@ -3,6 +3,7 @@
 namespace app\models;
 // Подключаем базовый (родительский) класс
 use yii\db\ActiveRecord;
+use Yii;
 
 class Task extends ActiveRecord {
 
@@ -30,5 +31,26 @@ class Task extends ActiveRecord {
             'text' => 'Заголовок',
             'comment' => 'Комментарий',
         ];
+    }
+
+    // Отправка сообщения на почту
+    public function sendEmail() {
+
+        if ($this->validate()) {
+            // Cоздаем экземпляр почтового сообщения
+            Yii::$app->mailer->compose()
+                // Заполняем его
+                ->setFrom('from@domain.com')
+                // Почту для отправки берем из параметров конфига
+                ->setTo(Yii::$app->params['adminEmail'])
+                // Объект берем из названия задачи
+                ->setSubject($this->text)
+                //->setTextBody('Change task list')
+                ->setHtmlBody('<strong>Change task list</strong>')
+                // Отправляем
+                ->send();
+            return true;
+        }
+        return false;
     }
 }

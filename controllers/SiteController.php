@@ -12,29 +12,7 @@ use app\models\ContactForm;
 use app\models\Task;
 
 class SiteController extends Controller {
-/*
-    public function behaviors() {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
-        ];
-    }
-*/
+
     public function actions() {
         return [
             'error' => [
@@ -63,6 +41,8 @@ class SiteController extends Controller {
         $model = new Task();
         // Если есть данные переданные через $_POST, они загружены в модель и сохранены б БД, то...
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // Отправляем сообщение на почту
+            $model->sendEmail();
             // Переходим на шаблон index
             return $this->redirect(['index']);
         } else {
@@ -79,6 +59,8 @@ class SiteController extends Controller {
         $model = Task::findOne($id);
         // Если есть данные переданные через $_POST, они загружены в модель и сохранены б БД, то...
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            // Отправляем сообщение на почту
+            $model->sendEmail();
             // Переходим на шаблон index
             return $this->redirect(['index']);
         } else {
