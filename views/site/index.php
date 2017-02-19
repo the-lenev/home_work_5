@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 // Устанавливаем title
-$this->title = 'Список дел';
+$this->title = Yii::t('app', 'Task list');
 // Добавляем title в дорогу (хлебные крошки)
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -36,5 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     <?php }?>
     </div>
-    <a class="btn btn-success" href="<?= Url::to(['site/create'])?>">Добавить</a>
+    <a class="btn btn-success" href="<?= Url::to(['site/create'])?>">
+         <?= Yii::t('app', 'Add');?>
+    </a>
 </div>

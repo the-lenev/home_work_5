@@ -19,22 +19,22 @@ use yii\jui\DatePicker;
                 'language' => 'ru',
                 'dateFormat' => 'yyyy-MM-dd',
             ]
-        )->textInput()->label('Дата');
+        )->textInput()->label(Yii::t('app', 'Date'));
         ?>
         <?=
         // Добавляем поле, соответствующее полю 'text' в таблице и устанавливаем его описание (метку)
-        $form->field($model, 'text')->label('Задача');
+        $form->field($model, 'text')->label(Yii::t('app', 'Task'));
         ?>
         <?=
         // Добавляем поле для комментария
-        $form->field($model, 'comment')->textArea(['rows' => 3, 'cols' => 5])->label('Комментарий');
+        $form->field($model, 'comment')->textArea(['rows' => 3, 'cols' => 5])->label(Yii::t('app', 'Comment'));
         ?>
 
         <div class="form-group">
             <?=
             // Добавляем кнопку отправки формы
             // В зависимости от типа записи (новая/редактирование) меняем её описание и цвет
-            Html::submitButton($model->isNewRecord ? 'Добавить' : 'Обновить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'])
+            Html::submitButton($model->isNewRecord ? Yii::t('app', 'Add') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'])
             ?>
         </div>
 
