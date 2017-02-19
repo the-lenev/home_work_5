@@ -8,6 +8,8 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+// Подключаем класс для создания ссылок
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -36,10 +38,15 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Review', 'url' => ['/site/review']],
-            ['label' => 'Create', 'url' => ['/site/create']],
-            ['label' => 'Edit', 'url' => ['/site/update']],
+            ['label' => Yii::t('app', 'Home'), 'url' => ['/site/index']],
+            ['label' => Yii::t('app', 'Add'), 'url' => ['/site/create']],
+            [
+            'label' => Yii::t('app', 'Language'),
+               'items' => [
+                    ['label' => Yii::t('app', 'Russian'), 'url' => Url::to('/ru')],
+                    ['label' => Yii::t('app', 'English'), 'url' => Url::to('/en')],
+               ],
+            ],
         ],
     ]);
     NavBar::end();
@@ -55,7 +62,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Home Work 5<?= date('Y') ?></p>
+        <p class="pull-left">&copy; Home Work 5 <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

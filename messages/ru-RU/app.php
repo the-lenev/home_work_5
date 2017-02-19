@@ -2,6 +2,7 @@
 
 return [
     'Language' => 'Язык',
+    'Home' => 'Главная',
     'Russian' => 'Русский',
     'English' => 'Английский',
     'Task list' => 'Список дел',
