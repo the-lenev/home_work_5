@@ -47,14 +47,14 @@ class Lang extends \yii\db\ActiveRecord {
         $language = self::getLangByUrl($url);
         // Если url не передали, то присваиваем текущий язык значению языка по умолчанию, иначе присаиваем найденное в БД значение
         self::$current = ($language === null) ? self::getDefaultLang() : $language;
-        // Устанавливаем значение языка приложения из поля локали установленного языка
+        // Устанавливаем значение языка приложения из поля локали текущего языка
         Yii::$app->language = self::$current->local;
     }
 
     // Получения языка по умолчанию
     static function getDefaultLang() {
         // По умолчанию присваиваем значение языка, у которого значение поля "default" равно 1
-        return Lang::find()->where('"default" = :default', [':default' => 1])->one();
+        return Lang::find()->where('`default` = :default', [':default' => 1])->one();
     }
 
     // Получения языка по префиксу (url)
