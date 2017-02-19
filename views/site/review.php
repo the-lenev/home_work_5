@@ -6,7 +6,7 @@ use yii\helpers\Url;
 
 
 // Устанавливаем title
-$this->title = 'Просмотр дела';
+$this->title = Yii::t('app', 'View task');
 // Добавляем title в дорогу (хлебные крошки)
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -40,5 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h3><?= $model->getAttributeLabel('comment')?></h3>
             <p><?= $model['comment']?></p>
         <?php }?>
-    <a class="btn btn-success" href="<?= Url::to(['site/'])?>">Вернуться к списку</a>
+    <a class="btn btn-success" href="<?= Url::to(['site/'])?>">
+        <?= Yii::t('app', 'Return to list')?>
+    </a>
 </div>

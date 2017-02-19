@@ -27,9 +27,9 @@ class Task extends ActiveRecord {
     public function attributeLabels() {
         return [
             'id' => 'ID',
-            'date' => 'Дата',
+            'date' => Yii::t('app', 'Date'),
             'text' => 'Заголовок',
-            'comment' => 'Комментарий',
+            'comment' => Yii::t('app', 'Comment'),
         ];
     }
 
